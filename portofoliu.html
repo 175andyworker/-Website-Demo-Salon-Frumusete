@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofoliu | Salon M'Alina</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+</head>
+<body>
+
+    <header class="nav-wrapper">
+        <div class="header-content">
+            <a href="index.html"><img src="logoo.png" alt="Logo M'Alina" class="logo"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="servicii.html">Servicii</a></li>
+                    <li class="active"><a href="portofoliu.html">Portofolio</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html">
+                <button class="book-now">Programează o vizită</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="portfolio-section" id="portofolio">
+        <div class="page-header-title" data-aos="fade-down">
+            <h1>Portofoliu M'Alina</h1>
+            <p>Inspirație și excelență: Descoperă cele mai reușite lucrări ale echipei noastre.</p>
+        </div>
+
+        <div class="portfolio-filters" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">Toate</button>
+            <button class="filter-btn" data-filter="hair">Hairstyling</button>
+            <button class="filter-btn" data-filter="nails">Manichiură</button>
+            <button class="filter-btn" data-filter="makeup">Machiaj</button>
+        </div>
+
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-item hair" data-aos="zoom-in">
+                <img src="poza-hair-1.jpg" alt="Balayage Auriu" loading="lazy">
+                <div class="item-overlay">
+                    <p>Balayage Auriu</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item nails" data-aos="zoom-in" data-aos-delay="100">
+                <img src="poza-nails-1.jpg" alt="Unghii Gel Minimalist" loading="lazy">
+                <div class="item-overlay">
+                    <p>Unghii Gel Minimalist</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item makeup" data-aos="zoom-in" data-aos-delay="200">
+                <img src="poza-makeup-1.jpg" alt="Machiaj Mireasă" loading="lazy">
+                <div class="item-overlay">
+                    <p>Machiaj Mireasă Natural</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item hair" data-aos="zoom-in">
+                <img src="poza-hair-2.jpg" alt="Tunsoare Bob" loading="lazy">
+                <div class="item-overlay">
+                    <p>Tunsoare Bob Elegant</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item nails" data-aos="zoom-in" data-aos-delay="100">
+                <img src="poza-nails-2.jpg" alt="Pedichiură Spa" loading="lazy">
+                <div class="item-overlay">
+                    <p>Pedichiură Spa</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item makeup" data-aos="zoom-in" data-aos-delay="200">
+                <img src="poza-makeup-2.jpg" alt="Machiaj Smokey Eyes" loading="lazy">
+                <div class="item-overlay">
+                    <p>Smokey Eyes Intens</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            
+            <div class="footer-column footer-brand">
+                <img src="logoo.png" alt="Logo M'Alina" class="footer-logo">
+                <p>Salon M'Alina oferă servicii complete de înfrumusețare, punând calitatea și stilul tău pe primul loc.</p>
+                <div class="qr-code-wrapper">
+                    <a href="URL-ul-tau-de-instagram" target="_blank">
+                        <img src="qr-instagram.png" alt="Scanează pentru Instagram" class="instagram-qr">
+                    </a>
+                    <p class="qr-label">Scan & Follow!</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a> 
+                </div>
+            </div>
+    
+            <div class="footer-column footer-nav-links">
+                <h3>Navigare Rapidă</h3>
+                <ul>
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="servicii.html">Servicii</a></li>
+                    <li><a href="portofoliu.html">Portofolio</a></li>
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-column footer-contact-info">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Strada Salonului nr. 5, Orașul Tău</p>
+                <p><i class="fas fa-phone"></i> +40 700 000 000</p>
+                <p><i class="fas fa-envelope"></i> contact@malina-salon.ro</p>
+            </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+            <p>&copy; 2024 Salon M'Alina. Toate drepturile rezervate.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200 });
+
+        /* ========================================================== */
+        /* LOGICA DE FILTRARE PORTOFOLIU (Duplicată, dar funcțională aici) */
+        /* ========================================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            if (filterButtons.length > 0 && portfolioItems.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const filterValue = button.dataset.filter;
+
+                        // 1. Schimbă starea activă a butonului
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+
+                        // 2. Filtrează elementele
+                        portfolioItems.forEach(item => {
+                            // Aplicăm 'none' sau 'block'
+                            item.style.display = 'none';
+                            
+                            const itemClasses = item.className;
+                            
+                            if (filterValue === 'all' || itemClasses.includes(filterValue)) {
+                                item.style.display = 'block'; 
+                            }
+                        });
+                    });
+                });
+
+                // Simulează click pe butonul 'Toate' la încărcarea paginii
+                document.querySelector('.filter-btn[data-filter="all"]').click();
+            }
+        });
+    </script>
+</body>
+</html>

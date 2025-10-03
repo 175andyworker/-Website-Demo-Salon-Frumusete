@@ -1,0 +1,1232 @@
+/* ======================================================== */
+/* 1. STILURI GLOBALE ȘI VARIABILE */
+/* ======================================================== */
+
+:root {
+    --color-primary: #5d4037; /* Maro Închis Principal */
+    --color-accent: #8c735d; /* Bej Elegant/Auriu Moale */
+    --color-background: #f5f5f5; /* Gri deschis pentru fundal general */
+    --color-text-dark: #333333;
+    --color-text-light: #f5f5f5;
+    --color-border: #e0e0e0; /* Culoare pentru linii subțiri */
+    --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.08);
+    --shadow-deep: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background); 
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    overflow-x: hidden; 
+    
+    /* CORECȚIA CRITICĂ: Layout pentru Footer "Sticky" */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-content-wrapper {
+    /* Permite conținutului să împingă footer-ul în jos */
+    flex-grow: 1; 
+    width: 100%; 
+}
+
+/* ======================================================== */
+/* 2. PRELOADER & ANIMAȚIE (STARTUP) */
+/* ======================================================== */
+
+/* Preloader Inițial: Ocupă tot ecranul, este deasupra tuturor */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out; /* Tranzitie finala */
+}
+
+/* Stilul Logo-ului din Preloader (Inițial Mărimea Normală) */
+.logo-intro {
+    width: 150px; 
+    transition: transform 1.5s ease-in-out; 
+}
+
+/* Starea Finală a Preloader-ului - Ascundere */
+.preloader.hide-preloader {
+    opacity: 0;
+    visibility: hidden; 
+}
+
+/* Animația de micșorare a Logo-ului */
+.preloader.shrink-logo .logo-intro {
+    transform: scale(0.5); 
+}
+
+/* ======================================================== */
+/* 3. ANTET (HEADER) & NAVIGARE */
+/* ======================================================== */
+
+.nav-wrapper {
+    background-color: white; 
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    box-shadow: var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    height: 80px; 
+}
+
+.header-content nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.header-content nav a {
+    text-decoration: none;
+    color: var(--color-primary); 
+    font-weight: bold;
+    font-size: 1.2em;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+/* Animație Slide de Fundal */
+.header-content nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-accent); 
+    transition: width 0.3s ease-out;
+}
+
+.header-content nav a:hover::after,
+.header-content nav li.active a::after {
+    width: 100%;
+}
+.header-content nav a:hover {
+    color: var(--color-accent);
+}
+
+/* Stiluri pentru butoanele de navigare (Contact/Programare) */
+.book-now, .book-now-btn {
+    background-color: var(--color-accent); 
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out; 
+    transform: scale(1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-now:hover, .book-now-btn:hover {
+    transform: scale(1.05);
+    background-color: var(--color-primary); 
+    box-shadow: 0 8px 15px rgba(140, 115, 93, 0.4);
+}
+
+.book-now:active, .book-now-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* ======================================================== */
+/* 4. STILURI PAGINĂ PRINCIPALĂ (HOME) */
+/* ======================================================== */
+
+/* Sectiunea Hero */
+.new-hero {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    height: 100vh; 
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+.hero-overlay-text h1 {
+    font-family: 'Playfair Display', serif; 
+    font-size: 3.5em;
+    margin: 0;
+}
+
+/* Stil pentru Butonul Principal (Hero Section) - SOLUȚIA SUBTILĂ */
+.hero-cta-btn {
+    display: inline-block; 
+    padding: 12px 30px; 
+    font-size: 1em; 
+    font-weight: 400; 
+    text-transform: uppercase;
+    
+    background-color: transparent; 
+    color: white; 
+    
+    /* Chenar fin alb semitransparent */
+    border: 1px solid rgba(255, 255, 255, 0.7); 
+    
+    border-radius: 2px; 
+    text-decoration: none; 
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: 20px; /* Adăugat aici pentru a fi complet */
+}
+
+/* Stilul la Hover/Trecere cu mouse-ul */
+.hero-cta-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+    color: white; 
+    border-color: white; 
+    transform: none; 
+}
+
+/* Ștergem blocul .book-now-btn pentru a evita conflictele de stil */
+
+
+/* Sectiunea "Servicii Complete" (Flip Card) */
+.treatments-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: white; 
+}
+
+.treatments-section h2 {
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 50px;
+}
+
+.treatments-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.treatment-item-container {
+    width: 250px;
+    height: 250px; 
+    perspective: 1000px;
+}
+
+.flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.treatment-item-container:hover .flip-card {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.flip-card-front {
+    background-color: white;
+    color: var(--color-primary);
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: opacity 0.3s;
+}
+
+.treatment-item-container:hover .flip-card-front img {
+    opacity: 0.8;
+}
+
+.flip-card-front h3 {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1.2em;
+    color: white; 
+    background: rgba(0, 0, 0, 0.4);
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.flip-card-back {
+    background-color: var(--color-accent);
+    color: #fff;
+    transform: rotateY(180deg);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.flip-card-back p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+
+/* Mini Galerie Flexibilă */
+.flex-gallery-section {
+    text-align: center; 
+    padding: 80px 20px;
+    background-color: var(--color-background);
+}
+.flex-gallery-section h2 {
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 50px;
+}
+
+.flex-gallery-container {
+    display: flex; 
+    height: 400px; 
+    gap: 10px; 
+    margin: 40px auto;
+    max-width: 1200px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.gallery-item {
+    flex: 1; 
+    min-width: 50px; 
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: flex 0.5s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item:hover {
+    flex: 3; 
+}
+
+.gallery-item h3 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px 15px;
+    margin: 0;
+    font-size: 1.2em;
+    width: 100%;
+    text-align: left;
+    transform: translateY(100%); 
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover h3 {
+    transform: translateY(0);
+}
+
+.all-portfolio-btn {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 30px;
+    margin-top: 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.all-portfolio-btn:hover {
+    transform: scale(1.05); 
+    background-color: var(--color-accent); 
+    box-shadow: 0 6px 10px rgba(93, 64, 55, 0.3); 
+}
+
+
+/* Secțiunea CTA (Call to Action) */
+.cta-section {
+    background: linear-gradient(135deg, var(--color-accent) 0%, #a88d75 100%);
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+    margin-top: 50px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cta-section p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.cta-input {
+    width: 100%;
+    padding: 18px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-family: 'Times New Roman', serif;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.cta-input:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button {
+    width: 100%;
+    padding: 18px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #6b4d40;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================================================== */
+/* 5. STILURI PAGINĂ DE SERVICII (TABBED)        */
+/* ======================================================== */
+
+.services-page-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-header-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-header-title h1 {
+    color: var(--color-primary);
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+/* Meniul de Tab-uri (Navigare) */
+.tabs-navigation {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 30px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.1em;
+    font-family: 'Times New Roman', serif;
+    cursor: pointer;
+    color: var(--color-primary);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.tab-button:hover {
+    color: var(--color-accent);
+}
+
+.tab-button.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
+/* Conținutul Tab-urilor */
+.tab-content {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content h2 {
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* Stiluri pentru Lista de Proceduri */
+.procedure-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.procedure-item {
+    background-color: #fff;
+    padding: 25px;
+    border-left: 5px solid var(--color-accent);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.procedure-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.procedure-item h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.price-tag {
+    font-weight: bold;
+    color: var(--color-accent);
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+/* Secțiunea Carousel de Recenzii */
+.testimonials-section {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #f5f5f5;
+}
+
+.testimonials-section h2 {
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 50px;
+}
+
+.carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+.testimonial-slide {
+    display: none;
+    text-align: center;
+    padding: 20px;
+    animation: fadeInSlide 0.8s ease-out;
+}
+
+.testimonial-slide.active {
+    display: block;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.testimonial-slide i.fa-quote-left {
+    color: var(--color-accent);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.review-text {
+    font-size: 1.2em;
+    color: #333;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.reviewer-name {
+    font-weight: bold;
+    color: var(--color-primary);
+    font-size: 1.1em;
+}
+
+.review-rating i.fa-star, .review-rating i.fa-star-half-alt {
+    color: gold; 
+    margin: 0 2px;
+}
+
+.carousel-dots {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    background-color: #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.active, .dot:hover {
+    background-color: var(--color-accent);
+    transform: scale(1.1);
+}
+
+/* ======================================================== */
+/* 6. STILURI PAGINĂ PORTOFOLIU (MASONRY/PINTEREST)*/
+/* ======================================================== */
+
+.portfolio-section {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.portfolio-filters {
+    text-align: center;
+    margin: 30px 0 50px;
+}
+
+.filter-btn {
+    background: #f8f8f8;
+    color: var(--color-primary);
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--color-accent);
+    color: #fff;
+    border-color: var(--color-accent);
+}
+
+/* Grila de Tip MASONRY (Pinterest) */
+.portfolio-grid {
+    column-count: 3;
+    column-gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.portfolio-item {
+    break-inside: avoid; 
+    position: relative;
+    margin-bottom: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.02);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Overlay la Hover */
+.item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(93, 64, 55, 0.6);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.item-overlay p {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+
+/* ======================================================== */
+/* 7. STILIZARE PAGINĂ CONTACT */
+/* ======================================================== */
+
+.premium-heading {
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    text-align: left; 
+    border-bottom: 3px solid var(--color-accent);
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Layout CONTACT SIMPLIFICAT (pentru paginile mai vechi/alternative) */
+.contact-page-simple-layout {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+}
+
+.booking-form-column-simple {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-deep);
+}
+.booking-form-column-simple input:focus,
+.booking-form-column-simple select:focus,
+.booking-form-column-simple textarea:focus {
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 5px rgba(140, 115, 93, 0.5);
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.booking-form-column-simple input,
+.booking-form-column-simple select,
+.booking-form-column-simple textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-family: inherit;
+}
+.booking-form-column-simple textarea { resize: vertical; }
+.form-note {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Layout CONTACT PREMIUM (Formular Complex / Citat + Hartă) */
+.contact-page-layout-premium {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; 
+    gap: 40px;
+}
+
+.booking-form-column-premium {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-deep);
+}
+
+.quote-map-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Stiluri pentru Citat */
+.quote-box {
+    /* Folosim culoarea de fundal a paginii */
+    background-color: var(--color-background); 
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow-deep);
+}
+
+.quote-box .fa-quote-left {
+    color: var(--color-accent);
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.quote-box .large-quote {
+    font-size: 1.8em; 
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--color-text-dark); /* Am corectat la culoarea textului */
+    font-family: 'Playfair Display', serif; 
+}
+
+.quote-box .quote-author {
+    margin-top: 20px;
+    font-style: italic;
+    color: var(--color-primary);
+}
+
+/* Stiluri pentru Hartă */
+.map-container-premium {
+    flex-grow: 1; 
+    min-height: 300px; 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-deep);
+}
+
+/* Stiluri pentru Formular Complex (Time Slot) */
+.booking-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; 
+    margin-top: 20px;
+}
+.booking-content h3 {
+    font-size: 1.2em;
+    color: var(--color-primary);
+    border-left: 4px solid var(--color-accent);
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+.booking-controls select, .booking-controls input[type="date"],
+#booking-details-form input[type="text"], #booking-details-form input[type="tel"] {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+.booking-controls { display: flex; gap: 15px; margin-bottom: 25px; }
+.time-slots-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.time-slot { padding: 10px 15px; border: 1px solid #ccc; border-radius: 6px; cursor: pointer; }
+.time-slot.available:hover { background-color: var(--color-accent); color: white; }
+.time-slot.selected { background-color: var(--color-primary); color: white; font-weight: 700; }
+
+.submit-booking-btn {
+    padding: 18px; 
+    background-color: var(--color-accent);
+    color: white;
+    font-size: 1.15em;
+    border-radius: 6px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.submit-booking-btn:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+
+/* ======================================================== */
+/* 8. STILURI PENTRU SUBOL (FOOTER) FINAL */
+/* ======================================================== */
+
+footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 40px 20px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex; 
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-column {
+    flex: 1 1 300px; 
+    min-width: 250px; 
+}
+
+.footer-logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.footer-column h3 {
+    color: #fff;
+    font-size: 1.3em;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 2px;
+}
+
+.footer-column a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease-out;
+}
+
+.footer-column a:hover::after {
+    width: 100%;
+}
+
+.footer-column a:hover {
+    color: var(--color-text-light);
+}
+
+/* Stiluri pentru Icoanele Social Media */
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: var(--color-text-light);
+    font-size: 1.5em;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--color-accent);
+    transform: translateY(-3px);
+}
+
+/* STILURI PENTRU QR CODE */
+.qr-code-wrapper {
+    margin: 20px 0 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-block;
+}
+
+.instagram-qr {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--color-accent);
+    border-radius: 5px;
+    display: block;
+    transition: transform 0.3s ease-out;
+}
+
+.qr-code-wrapper a:hover .instagram-qr {
+    transform: scale(1.05);
+}
+
+.qr-label {
+    color: #ddd;
+    font-size: 0.9em;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Secțiunea Copyright */
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-contact-info p i {
+    margin-right: 10px;
+    color: var(--color-accent);
+}
+
+.footer-column h4 {
+    color: var(--color-accent);
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+.footer-program-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-program-list li {
+    font-size: 0.9em;
+    /* Am eliminat --color-footer-text deoarece nu exista în :root */
+    color: var(--color-text-light); 
+    margin-bottom: 5px;
+}
+
+
+/* ======================================================== */
+/* 9. RESPONSIVE DESIGN (Media Queries) */
+/* ======================================================== */
+
+@media (max-width: 1200px) {
+    .header-content {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    /* Layout General */
+    .contact-page-simple-layout,
+    .contact-page-layout-premium {
+        grid-template-columns: 1fr;
+        margin: 40px auto;
+        max-width: 90%;
+        gap: 30px;
+    }
+    
+    .booking-form-column-premium, 
+    .booking-form-column-simple,
+    .quote-map-column {
+        border-radius: 12px;
+        margin: 0;
+        box-shadow: var(--shadow-deep);
+    }
+    
+    .booking-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .booking-controls {
+        flex-direction: column;
+    }
+    
+    .large-quote {
+        font-size: 1.4em;
+    }
+
+    /* Portofoliu - Scădem numărul de coloane */
+    .portfolio-grid {
+        column-count: 2;
+        column-gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navigare */
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .header-content nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px 0;
+    }
+    .logo {
+        height: 60px;
+        margin-bottom: 15px;
+    }
+
+    /* Hero */
+    .hero-overlay-text h1 {
+        font-size: 2.5em;
+    }
+    .new-hero {
+        height: 50vh;
+    }
+
+    /* Galerii */
+    .treatments-grid {
+        gap: 20px;
+    }
+    .treatment-item-container {
+        width: 200px;
+        height: 200px;
+    }
+    .flex-gallery-container {
+        flex-direction: column;
+        height: auto;
+    }
+    .gallery-item {
+        flex: none; 
+        height: 200px;
+    }
+    .gallery-item:hover {
+        flex: none; 
+    }
+
+    /* Footer (Subsol) */
+    .footer-container {
+        flex-direction: column; 
+        text-align: center;
+        gap: 0; 
+    }
+
+    .footer-column {
+        min-width: 100%;
+        margin-bottom: 30px; 
+    }
+    
+    .footer-column h3 {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+        display: flex;
+    }
+    
+    .footer-contact-info p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 500px) {
+    /* Portofoliu - O singură coloană pe telefoane mici */
+    .portfolio-grid {
+        column-count: 1;
+    }
+
+    .booking-form-column-premium, .booking-form-column-simple {
+        padding: 30px;
+    }
+    
+    .quote-map-column {
+        padding: 30px;
+    }
+}
